@@ -1,11 +1,14 @@
 import 'package:blog_app/core/theme/app_palette.dart';
+import 'package:blog_app/features/auth/presentation/pages/login_page.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
-
+  static route() => MaterialPageRoute(
+        builder: (context) => const SignUpPage(),
+      );
   @override
   State<SignUpPage> createState() => _SignUpPageState();
 }
@@ -27,10 +30,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppPallete.backgroundColor,
-        foregroundColor: AppPallete.backgroundColor,
-      ),
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: SingleChildScrollView(
@@ -79,7 +79,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(height: 20),
                 //
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(LoginPage.route());
+                  },
                   child: RichText(
                     text: TextSpan(
                       text: 'Already have an account? ',
