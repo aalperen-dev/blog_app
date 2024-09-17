@@ -1,4 +1,6 @@
+import 'package:blog_app/core/usecase/usecases.dart';
 import 'package:blog_app/features/auth/domain/entities/user_entity.dart';
+import 'package:blog_app/features/auth/domain/usecases/current_user.dart';
 import 'package:blog_app/features/auth/domain/usecases/user_login.dart';
 import 'package:blog_app/features/auth/domain/usecases/user_signup.dart';
 import 'package:flutter/material.dart';
@@ -10,14 +12,18 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final UserSignUp _userSignUp;
   final UserLogin _userLogin;
-  AuthBloc({
-    required UserSignUp userSignUp,
-    required UserLogin userLogin,
-  })  : _userSignUp = userSignUp,
+  final CurrentUser _currentUser;
+  AuthBloc(
+      {required UserSignUp userSignUp,
+      required UserLogin userLogin,
+      required CurrentUser currentUser})
+      : _userSignUp = userSignUp,
         _userLogin = userLogin,
+        _currentUser = currentUser,
         super(AuthInitial()) {
     on<AuthSignUp>(_onAuthSignUp);
     on<AuthLogin>(_onAuthLogin);
+    on<AuthIsUserLoggedIn>(_isUserLoggedIn);
   }
 
   void _onAuthSignUp(
@@ -47,6 +53,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       email: event.email,
       password: event.password,
     ));
+
+    res.fold(
+      (failure) => emit(AuthFailure(message: failure.message)),
+      (userModel) => emit(AuthSuccess(userEntity: userModel)),
+    );
+  }
+
+  void _isUserLoggedIn(
+    AuthIsUserLoggedIn event,
+    Emitter<AuthState> emit,
+  ) async {
+    final res = await _currentUser(NoParams());
 
     res.fold(
       (failure) => emit(AuthFailure(message: failure.message)),

@@ -12,6 +12,20 @@ class AuthRepositoryImpl implements AuthRepository {
   const AuthRepositoryImpl(this.remoteDataSource);
 
   @override
+  Future<Either<AppFailure, UserEntity>> currentUser() async {
+    try {
+      final currentUser = await remoteDataSource.getCurrentUserData();
+
+      if (currentUser == null) {
+        return Left(AppFailure('User not logged in!'));
+      }
+      return Right(currentUser);
+    } on AppException catch (e) {
+      return Left(AppFailure(e.message));
+    }
+  }
+
+  @override
   Future<Either<AppFailure, UserEntity>> loginWithEmailAndPassword({
     required String email,
     required String password,
