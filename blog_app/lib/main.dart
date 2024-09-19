@@ -2,7 +2,7 @@ import 'package:blog_app/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:blog_app/core/theme/theme.dart';
 import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/pages/login_page.dart';
-import 'package:blog_app/features/auth/presentation/pages/signup_page.dart';
+import 'package:blog_app/features/blog/presentation/pages/blog_page.dart';
 import 'package:blog_app/init_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,7 +50,9 @@ class _MainAppState extends State<MainApp> {
           return state is AppUserLoggedIn;
         },
         builder: (context, state) {
-          if (state is AppUserLoggedIn) {}
+          if (state is AppUserLoggedIn) {
+            return const BlogPage();
+          }
 
           return const LoginPage();
         },
