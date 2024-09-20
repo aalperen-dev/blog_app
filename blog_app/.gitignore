@@ -44,3 +44,4 @@ app.*.map.json
 
 lib/core/secrets/app_screts.dart
 log.txt
+order.txt
