@@ -14,6 +14,12 @@ class BlogEditor extends StatelessWidget {
     return TextFormField(
       maxLines: null,
       controller: controller,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return '$hintText is missing!';
+        }
+        return null;
+      },
       decoration: InputDecoration(hintText: hintText),
     );
   }
