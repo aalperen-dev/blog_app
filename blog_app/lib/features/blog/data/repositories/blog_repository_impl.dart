@@ -60,12 +60,8 @@ class BlogRepositoryImpl implements BlogRepository {
   @override
   Future<Either<AppFailure, List<BlogEntitiy>>> getAllBlogs() async {
     try {
-      // if (!await (connectionChecker.isConnected)) {
-      //   final blogs = blogLocalDataSource.loadBlogs();
-      //   return right(blogs);
-      // }
       final blogs = await blogRemoteDataSource.getAllBlogs();
-      // blogLocalDataSource.uploadLocalBlogs(blogs: blogs);
+
       return Right(blogs);
     } on AppException catch (e) {
       return Left(AppFailure(e.message));

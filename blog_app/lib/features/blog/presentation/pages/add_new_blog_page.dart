@@ -71,7 +71,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
         title: const Text('Title'),
         actions: [
           IconButton(
-            onPressed: () => uploadBlog,
+            onPressed: uploadBlog,
             icon: const Icon(Icons.done_rounded),
           ),
         ],
@@ -80,7 +80,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
         listener: (context, state) {
           if (state is BlogFailure) {
             AppSnackbar.showSnackBar(context, state.error);
-          } else if (state is BlogSuccess) {
+          } else if (state is BlogUploadSuccess) {
             Navigator.of(context).pushAndRemoveUntil(
               BlogPage.route(),
               (route) => false,
@@ -102,7 +102,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
                     //
                     image == null
                         ? GestureDetector(
-                            onTap: () => selectImage,
+                            onTap: selectImage,
                             child: DottedBorder(
                               color: AppPallete.borderColor,
                               dashPattern: const [10, 4],
@@ -132,7 +132,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
                             ),
                           )
                         : GestureDetector(
-                            onTap: () => selectImage,
+                            onTap: selectImage,
                             child: SizedBox(
                               height: 150,
                               width: double.infinity,
