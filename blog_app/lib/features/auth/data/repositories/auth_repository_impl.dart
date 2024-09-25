@@ -1,3 +1,4 @@
+import 'package:blog_app/core/constants/constants.dart';
 import 'package:blog_app/core/error/app_exceptions.dart';
 import 'package:blog_app/core/error/app_failures.dart';
 import 'package:blog_app/core/network/connection_checker.dart';
@@ -6,7 +7,6 @@ import 'package:blog_app/core/common/entities/user_entity.dart';
 import 'package:blog_app/features/auth/data/models/user_model.dart';
 import 'package:blog_app/features/auth/domain/repository/auth_repository.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:supabase_flutter/supabase_flutter.dart' as sb;
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
@@ -25,9 +25,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
         return Right(
           UserModel(
-              id: session.user.id,
-              email: session.user.email ?? '',
-              name: 'name'),
+            id: session.user.id,
+            email: session.user.email ?? '',
+            name: 'name',
+          ),
         );
       }
 
@@ -76,14 +77,12 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       // bağlantı kontrol
       if (!await (connectionChecker.isConnected)) {
-        return Left(AppFailure('No internet connection'));
+        return Left(AppFailure(AppConstants.noConnectionsErrorMsg));
       }
 
       final user = await fn();
 
       return Right(user);
-    } on sb.AuthException catch (e) {
-      return Left(AppFailure(e.message));
     } on AppException catch (e) {
       return Left(AppFailure(e.message));
     }

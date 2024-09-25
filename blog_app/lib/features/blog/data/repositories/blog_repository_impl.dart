@@ -1,7 +1,10 @@
 import 'dart:io';
 
+import 'package:blog_app/core/constants/constants.dart';
 import 'package:blog_app/core/error/app_exceptions.dart';
 import 'package:blog_app/core/error/app_failures.dart';
+import 'package:blog_app/core/network/connection_checker.dart';
+import 'package:blog_app/features/blog/data/datasources/blog_local_data_source.dart';
 import 'package:blog_app/features/blog/data/datasources/blog_remote_data_source.dart';
 import 'package:blog_app/features/blog/data/models/blog_model.dart';
 import 'package:blog_app/features/blog/domain/entities/blog_entitiy.dart';
@@ -11,12 +14,12 @@ import 'package:uuid/uuid.dart';
 
 class BlogRepositoryImpl implements BlogRepository {
   final BlogRemoteDataSource blogRemoteDataSource;
-  // final BlogLocalDataSource blogLocalDataSource;
-  // final ConnectionChecker connectionChecker;
+  final BlogLocalDataSource blogLocalDataSource;
+  final ConnectionChecker connectionChecker;
   BlogRepositoryImpl(
     this.blogRemoteDataSource,
-    // this.blogLocalDataSource,
-    // this.connectionChecker,
+    this.blogLocalDataSource,
+    this.connectionChecker,
   );
 
   @override
@@ -28,9 +31,9 @@ class BlogRepositoryImpl implements BlogRepository {
     required List<String> topics,
   }) async {
     try {
-      // if (!await (connectionChecker.isConnected)) {
-      //   return left(AppFailure(Constants.noConnectionErrorMessage));
-      // }
+      if (!await (connectionChecker.isConnected)) {
+        return Left(AppFailure(AppConstants.noConnectionsErrorMsg));
+      }
       BlogModel blogModel = BlogModel(
         id: const Uuid().v1(),
         posterId: posterId,
@@ -60,8 +63,12 @@ class BlogRepositoryImpl implements BlogRepository {
   @override
   Future<Either<AppFailure, List<BlogEntitiy>>> getAllBlogs() async {
     try {
+      if (!await (connectionChecker.isConnected)) {
+        final blogs = blogLocalDataSource.loadBlogs();
+        return Right(blogs);
+      }
       final blogs = await blogRemoteDataSource.getAllBlogs();
-
+      blogLocalDataSource.uploadLocalBlogs(blogs: blogs);
       return Right(blogs);
     } on AppException catch (e) {
       return Left(AppFailure(e.message));
