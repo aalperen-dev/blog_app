@@ -1,4 +1,4 @@
-# Spotify Clone / Music App
+# Blog App
 
 This project is a clone of a [YouTube video](https://www.youtube.com/watch?v=CWvlOU2Y3Ik) by @RivaanRanawat, created to help me learn new technologies and development practices. The aim is to replicate the functionality and design of the original video as closely as possible while incorporating new skills and techniques.
 
@@ -37,16 +37,15 @@ During the development of this project, I learned the following technologies and
 
 <table style="border-collapse: collapse; border: none; width: 100%;">
     <tr>
-        <td style="border: none; padding: 8px; text-align: left;"> <img src="https://github.com/aalperen-dev/spotify/blob/main/project_screenshots/signup_screen.png"></td >
-        <td style="border: none; padding: 8px; text-align: left;"> <img src="https://github.com/aalperen-dev/spotify/blob/main/project_screenshots/signin_screen.png"> </td>
+        <td style="border: none; padding: 8px; text-align: left;"> <img src="https://github.com/aalperen-dev/blog_app/blob/main/project_screenshots/sign_in.png"></td >
+        <td style="border: none; padding: 8px; text-align: left;"> <img src="https://github.com/aalperen-dev/blog_app/blob/main/project_screenshots/sign_up.png"> </td>
     </tr>
     <tr>
-        <td style="border: none; padding: 8px; text-align: left;"> <img src="https://github.com/aalperen-dev/spotify/blob/main/project_screenshots/home_screen.png"></td >
-        <td style="border: none; padding: 8px; text-align: left;"> <img src="https://github.com/aalperen-dev/spotify/blob/main/project_screenshots/library_screen.png"> </td>
+        <td style="border: none; padding: 8px; text-align: left;"> <img src="https://github.com/aalperen-dev/blog_app/blob/main/project_screenshots/blog_details.png"></td >
+        <td style="border: none; padding: 8px; text-align: left;"> <img src="https://github.com/aalperen-dev/blog_app/blob/main/project_screenshots/app_blogs.png"> </td>
     </tr>
     <tr>
-        <td style="border: none; padding: 8px; text-align: left;"> <img src="https://github.com/aalperen-dev/spotify/blob/main/project_screenshots/upload_song_screen.png"></td >
-        <td style="border: none; padding: 8px; text-align: left;"> <img src="https://github.com/aalperen-dev/spotify/blob/main/project_screenshots/music_player.png"> </td>
+        <td style="border: none; padding: 8px; text-align: left;"> <img src="https://github.com/aalperen-dev/blog_app/blob/main/project_screenshots/add_blog.png"></td >        
     </tr>
 </table>
 
