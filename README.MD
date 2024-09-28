@@ -1,6 +1,6 @@
 # Blog App
 
-This project is a clone of a [YouTube video](https://www.youtube.com/watch?v=CWvlOU2Y3Ik) by @RivaanRanawat, created to help me learn new technologies and development practices. The aim is to replicate the functionality and design of the original video as closely as possible while incorporating new skills and techniques.
+This project is a clone of a [YouTube video](https://www.youtube.com/watch?v=ELFORM9fmss) by @RivaanRanawat, created to help me learn new technologies and development practices. The aim is to replicate the functionality and design of the original video as closely as possible while incorporating new skills and techniques.
 
 ## Skills Acquired
 
