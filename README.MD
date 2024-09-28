@@ -6,19 +6,17 @@ This project is a clone of a [YouTube video](https://www.youtube.com/watch?v=CWv
 
 During the development of this project, I learned the following technologies and techniques:
 
-- Riverpod Generators: Used for state management in Flutter.
-
-- Backend Development with FastAPI: Set up a backend service to handle API requests and responses.
-
-- Connecting to APIs: Integrated the frontend with backend APIs to fetch and display data.
-
-- Basics of PostgreSQL: Gained foundational knowledge in PostgreSQL for database management.
-
 - MVVM Architecture: Implemented Model-View-ViewModel (MVVM) architecture for better separation of concerns and more manageable code.
 
 - Feature-Wise Development: Applied feature-wise development practices to structure the project modularly and maintainably.
 
 - Basics of Hive Package: Utilized the Hive package for local storage to manage and persist data on the device.
+
+- Clean Architecture & SOLID Principles: Followed clean architecture guidelines and SOLID principles to enhance code maintainability and scalability.
+
+- Basics of GetIt: Gained foundational knowledge of GetIt for efficient dependency injection.
+
+- Basics of Supabase: Learned the fundamentals of Supabase for handling cloud storage, authentication, and database management.
 
 ## Tech Stack
 
@@ -29,8 +27,7 @@ During the development of this project, I learned the following technologies and
 
 ### Backend
 
-- **FastAPI**: Used FastAPI for setting up the backend services and handling API requests.
-- **Cloudinary**: Utilized Cloudinary for cloud storage and media management.
+- **Supabase**: Employed Supabase for cloud services, including storage, authentication, and database management.
 
 ### Local Storage
 
